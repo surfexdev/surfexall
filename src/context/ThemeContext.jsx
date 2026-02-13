@@ -11,11 +11,16 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     localStorage.setItem('theme', theme);
     const root = document.documentElement;
+    root.classList.add('theme-transition');
     if (theme === 'dark') {
       root.classList.add('dark');
     } else {
       root.classList.remove('dark');
     }
+    const id = setTimeout(() => {
+      root.classList.remove('theme-transition');
+    }, 2200);
+    return () => clearTimeout(id);
   }, [theme]);
 
   const value = useMemo(() => ({
@@ -34,4 +39,3 @@ export function ThemeProvider({ children }) {
 export function useTheme() {
   return useContext(ThemeContext);
 }
-

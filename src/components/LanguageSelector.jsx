@@ -19,8 +19,8 @@ export function LanguageSelector() {
         </button>
       </div>
       {promptOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] flex items-center justify-center">
-          <div className="bg-white dark:bg-charcoal-900 border border-charcoal-200 dark:border-charcoal-800 p-8 max-w-sm w-full">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60]">
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-charcoal-900 border border-charcoal-200 dark:border-charcoal-800 p-8 max-w-sm w-full">
             <h3 className="font-heading text-2xl mb-4 dark:text-white">{t.chooseLanguage}</h3>
             <div className="flex items-center gap-3">
               <button
@@ -48,4 +48,3 @@ export function LanguageSelector() {
     </>
   );
 }
-

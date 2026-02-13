@@ -23,7 +23,7 @@ export function Header({ onOpenVisitor, onOpenExhibitor }) {
           <img src={logoSrc} alt="SURFEX" className="h-10 w-auto" />
         </Link>
         <div className="hidden md:flex items-center gap-8">
-          <NavLink className={navLinkClass} to="/">Home</NavLink>
+          <NavLink className={navLinkClass} to="/">{t.home}</NavLink>
           <NavLink className={navLinkClass} to="/brand-story">{t.brandStory}</NavLink>
           <NavLink className={navLinkClass} to="/why-visit">{t.whyVisit}</NavLink>
           <NavLink className={navLinkClass} to="/why-exhibit">{t.whyExhibit}</NavLink>

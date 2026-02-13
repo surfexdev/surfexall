@@ -22,3 +22,9 @@ body {
 .font-body {
   font-family: "Kanit", sans-serif;
 }
+
+:root.theme-transition, :root.theme-transition * {
+  transition-property: background-color, color, border-color;
+  transition-duration: 2000ms;
+  transition-timing-function: ease;
+}

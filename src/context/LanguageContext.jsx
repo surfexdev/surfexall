@@ -4,6 +4,7 @@ const LanguageContext = createContext();
 
 const translations = {
   en: {
+    home: 'Home',
     tagline: 'Built for the Surface Industry',
     eventLine: 'A Global Platform for Surface Intelligence',
     dates: 'December 8–10, 2026',
@@ -37,6 +38,7 @@ const translations = {
     success: 'Submitted successfully',
   },
   ar: {
+    home: 'الرئيسية',
     tagline: 'مصمم لصناعة الأسطح',
     eventLine: 'منصة عالمية لذكاء الأسطح',
     dates: '8–10 ديسمبر 2026',
@@ -78,7 +80,8 @@ export function LanguageProvider({ children }) {
   });
   const [promptOpen, setPromptOpen] = useState(() => {
     const visited = localStorage.getItem('languageSelected');
-    return !visited;
+    const lang = localStorage.getItem('language');
+    return !(visited && lang);
   });
 
   useEffect(() => {
@@ -86,6 +89,13 @@ export function LanguageProvider({ children }) {
     const root = document.documentElement;
     root.lang = language === 'ar' ? 'ar' : 'en';
   }, [language]);
+
+  useEffect(() => {
+    document.body.style.overflow = promptOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [promptOpen]);
 
   const t = translations[language];
 
