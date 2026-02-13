@@ -1,0 +1,5 @@
+<svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="160" height="40" fill="none"/>
+  <text x="4" y="28" font-family="Abril Display, serif" font-size="24" fill="#ffffff">SURFEX</text>
+  <rect x="130" y="14" width="8" height="8" fill="#c46a2d"/>
+</svg>
