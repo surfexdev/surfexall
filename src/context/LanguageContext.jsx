@@ -97,6 +97,18 @@ export function LanguageProvider({ children }) {
     };
   }, [promptOpen]);
 
+  useEffect(() => {
+    const handler = () => {
+      const visited = localStorage.getItem('languageSelected');
+      const lang = localStorage.getItem('language');
+      if (!visited || !lang) {
+        setPromptOpen(true);
+      }
+    };
+    window.addEventListener('initial-theme-transition-complete', handler);
+    return () => window.removeEventListener('initial-theme-transition-complete', handler);
+  }, []);
+
   const t = translations[language];
 
   const value = useMemo(() => ({

@@ -3,10 +3,25 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark' ? 'dark' : 'light';
-  });
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const booted = sessionStorage.getItem('initialThemeBooted');
+    const root = document.documentElement;
+    root.classList.remove('dark');
+    if (!booted) {
+      setTimeout(() => {
+        setTheme('dark');
+        setTimeout(() => {
+          sessionStorage.setItem('initialThemeBooted', 'true');
+          window.dispatchEvent(new CustomEvent('initial-theme-transition-complete'));
+        }, 2000);
+      }, 100);
+    } else {
+      const saved = localStorage.getItem('theme') || 'dark';
+      setTheme(saved);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('theme', theme);
